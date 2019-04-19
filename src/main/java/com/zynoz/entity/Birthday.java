@@ -1,5 +1,7 @@
 package com.zynoz.entity;
 
+import com.zynoz.provider.helper.CsvSchema;
+
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
@@ -7,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
+@CsvSchema(columns = { "id", "name", "birthdayDate", "reminderDate", "everyYear" })
 public class Birthday {
 
     @Id

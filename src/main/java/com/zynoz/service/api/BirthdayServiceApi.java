@@ -4,7 +4,7 @@ import com.zynoz.entity.Birthday;
 
 import java.util.List;
 
-public interface ServiceApi {
+public interface BirthdayServiceApi {
     Birthday createBirthday(Birthday birthday);
     Birthday updateBirthday(Birthday birthday);
     Birthday findBirthday(Long id);

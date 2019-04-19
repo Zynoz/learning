@@ -1,7 +1,7 @@
 package com.zynoz.service;
 
 import com.zynoz.entity.Birthday;
-import com.zynoz.service.api.ServiceApi;
+import com.zynoz.service.api.BirthdayServiceApi;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Transactional
-public class BirthdayService implements ServiceApi {
+public class BirthdayService implements BirthdayServiceApi {
 
     @PersistenceContext
     EntityManager entityManager;

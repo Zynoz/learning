@@ -101,4 +101,6 @@ public class BirthdayRest implements RestApi {
     public List<Birthday> getBirthdays(@QueryParam("re") boolean reoccuring) {
         return birthdayService.getBirthdays().stream().filter(b -> b.isEveryYear() == reoccuring).collect(Collectors.toList());
     }
+
+
 }
