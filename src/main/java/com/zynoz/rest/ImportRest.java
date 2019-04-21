@@ -1,8 +1,8 @@
 package com.zynoz.rest;
 
 import com.zynoz.entity.Birthday;
-import com.zynoz.rest.api.UploadApi;
-import com.zynoz.service.UploadService;
+import com.zynoz.rest.api.ImportApi;
+import com.zynoz.service.ImportService;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -12,13 +12,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("upload")
+@Path("import")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class BirthdayUpload implements UploadApi {
+public class ImportRest implements ImportApi {
 
     @Inject
-    UploadService uploadService;
+    ImportService importService;
 
     @Override
     @Path("json")
@@ -26,15 +26,20 @@ public class BirthdayUpload implements UploadApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public List<Birthday> importJson(List<Birthday> birthdays) {
-        return uploadService.importBirthdays(birthdays);
+        return importService.importBirthdays(birthdays);
     }
 
     @Override
     @Path("csv")
     @POST
     @Consumes("text/csv")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces("text/csv")
     public List<Birthday> importCsv(List<Birthday> birthdays) {
-        return uploadService.importBirthdays(birthdays);
+        return importService.importBirthdays(birthdays);
+    }
+
+    @Override
+    public void test() {
+
     }
 }

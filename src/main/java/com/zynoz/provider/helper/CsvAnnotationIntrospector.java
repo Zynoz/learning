@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Optional;
 
-class CsvAnnotationIntrospector {
+public class CsvAnnotationIntrospector {
 
     private final char sep;
     private final Optional<String[]> columns;

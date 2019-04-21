@@ -6,6 +6,7 @@
              version="2.1">
     <persistence-unit name="myPU" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/birthdays</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>
@@ -17,6 +18,8 @@
             <property name="eclipselink.logging.level" value="FINE" />
             <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
             <property name="eclipselink.ddl-generation.output-mode" value="database" />
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselinkl.loggin.parameters" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>

@@ -32,8 +32,8 @@ public class BirthdayService implements BirthdayServiceApi {
 
     @Override
     public List<Birthday> getBirthdays() {
-        List<Birthday> birthdays = entityManager.createQuery("SELECT  b from Birthday  b", Birthday.class).getResultList();
-        return entityManager.createQuery("SELECT b FROM Birthday b", Birthday.class).getResultList();
+//        List<Birthday> birthdays = entityManager.createQuery("SELECT  b from birthday  b", Birthday.class).getResultList();
+        return entityManager.createQuery("SELECT b FROM birthday b", Birthday.class).getResultList();
     }
 
     @Override

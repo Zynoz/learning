@@ -4,6 +4,6 @@ import com.zynoz.entity.Birthday;
 
 import java.util.List;
 
-public interface UploadServiceApi {
+public interface ImportServiceApi {
     List<Birthday> importBirthdays(List<Birthday> birthdays);
 }

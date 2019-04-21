@@ -8,7 +8,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "birthday")
+@Table(name = "birthday")
 @CsvSchema(columns = { "id", "name", "birthdayDate", "reminderDate", "everyYear" })
 public class Birthday {
 
