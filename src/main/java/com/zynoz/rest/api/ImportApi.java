@@ -1,11 +1,11 @@
 package com.zynoz.rest.api;
 
-import com.zynoz.entity.Birthday;
+import birthday.entities.Reminder;
 
 import java.util.List;
 
 public interface ImportApi {
-    List<Birthday> importJson(List<Birthday> birthdays);
-    List<Birthday> importCsv(List<Birthday> birthdays);
+    List<Reminder> importJson(List<Reminder> reminders);
+    List<Reminder> importCsv(List<Reminder> reminders);
     void test();
 }

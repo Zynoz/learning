@@ -1,8 +1,8 @@
 package com.zynoz.rest;
 
-import com.zynoz.entity.Birthday;
+import birthday.entities.Reminder;
+import birthday.service.impl.ImportService;
 import com.zynoz.rest.api.ImportApi;
-import com.zynoz.service.ImportService;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -25,8 +25,8 @@ public class ImportRest implements ImportApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Birthday> importJson(List<Birthday> birthdays) {
-        return importService.importBirthdays(birthdays);
+    public List<Reminder> importJson(List<Reminder> reminders) {
+        return importService.importReminders(reminders);
     }
 
     @Override
@@ -34,8 +34,8 @@ public class ImportRest implements ImportApi {
     @POST
     @Consumes("text/csv")
     @Produces("text/csv")
-    public List<Birthday> importCsv(List<Birthday> birthdays) {
-        return importService.importBirthdays(birthdays);
+    public List<Reminder> importCsv(List<Reminder> reminders) {
+        return importService.importReminders(reminders);
     }
 
     @Override

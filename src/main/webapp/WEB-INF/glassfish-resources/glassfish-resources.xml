@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <jdbc-connection-pool
+            max-pool-size="10"
+            datasource-classname="org.postgresql.ds.PGSimpleDataSource"
+            res-type="javax.sql.DataSource"
+            name="java:app/jdbc/pool"
+            pool-resize-quantity="10">
+        <property name="user" value="myapp"/>
+        <property name="PortNumber" value="5432"/>
+        <property name="password" value="myapp"/>
+        <property name="ServerName" value="192.168.0.104"/>
+        <property name="databaseName" value="birthdays"/>
+        <property name="connectionAttributes" value=";create=true"/>
+    </jdbc-connection-pool>
+    <jdbc-resource
+            pool-name="java:app/jdbc/pool"
+            jndi-name="java:app/jdbc/data"/>
+</resources>

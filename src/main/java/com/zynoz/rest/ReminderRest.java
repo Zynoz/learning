@@ -1,8 +1,8 @@
 package com.zynoz.rest;
 
-import com.zynoz.entity.Birthday;
+import birthday.entities.Reminder;
+import birthday.service.impl.ReminderService;
 import com.zynoz.rest.api.RestApi;
-import com.zynoz.service.BirthdayService;
 
 import javax.inject.Inject;
 import javax.validation.ValidationException;
@@ -15,20 +15,20 @@ import java.util.stream.Collectors;
 @Path("birthday")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class BirthdayRest implements RestApi {
+public class ReminderRest implements RestApi {
 
     @Inject
-    BirthdayService birthdayService;
+    private ReminderService reminderService;
 
     @Override
     @Path("create")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createBirthday(Birthday birthday) {
+    public Response createReminder(Reminder reminder) {
         try {
-            birthdayService.createBirthday(birthday);
-            return Response.status(Response.Status.OK).entity(birthday).build();
+            reminderService.createReminder(reminder);
+            return Response.status(Response.Status.OK).entity(reminder).build();
         } catch (ValidationException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("ERROR: Could not create new birthday").build();
         }
@@ -39,10 +39,10 @@ public class BirthdayRest implements RestApi {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateBirthday(Birthday birthday) {
+    public Response updateReminder(Reminder reminder) {
         try {
-            birthdayService.updateBirthday(birthday);
-            return Response.status(Response.Status.OK).entity(birthday).build();
+            reminderService.updateReminder(reminder);
+            return Response.status(Response.Status.OK).entity(reminder).build();
         } catch (ValidationException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("ERROR: Could not update birthday").build();
         }
@@ -53,8 +53,8 @@ public class BirthdayRest implements RestApi {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Birthday getBirthday(@PathParam("id") Long id) {
-        return birthdayService.findBirthday(id);
+    public Reminder getReminder(@PathParam("id") Long id) {
+        return reminderService.findReminder(id);
     }
 
     @Override
@@ -62,8 +62,8 @@ public class BirthdayRest implements RestApi {
     @GET
     @Consumes("text/csv")
     @Produces("text/csv")
-    public List<Birthday> getBirthdaysCsv() {
-        return birthdayService.getBirthdays();
+    public List<Reminder> getRemindersCsv() {
+        return reminderService.getReminders();
     }
 
     @Override
@@ -71,8 +71,8 @@ public class BirthdayRest implements RestApi {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Birthday> getBirthdaysJson() {
-        return birthdayService.getBirthdays();
+    public List<Reminder> getRemindersJson() {
+        return reminderService.getReminders();
     }
 
     @Override
@@ -80,8 +80,8 @@ public class BirthdayRest implements RestApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Birthday deleteBirthday(@PathParam("id")Long id) {
-        return birthdayService.deleteBirthdayId(id);
+    public Reminder deleteReminder(@PathParam("id")Long id) {
+        return reminderService.deleteReminderId(id);
     }
 
     @Override
@@ -89,8 +89,8 @@ public class BirthdayRest implements RestApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Birthday> deleteAll() {
-        return birthdayService.clearAll();
+    public List<Reminder> deleteAll() {
+        return reminderService.clearAll();
     }
 
     @Override
@@ -98,9 +98,7 @@ public class BirthdayRest implements RestApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Birthday> getBirthdays(@QueryParam("re") boolean reoccuring) {
-        return birthdayService.getBirthdays().stream().filter(b -> b.isEveryYear() == reoccuring).collect(Collectors.toList());
+    public List<Reminder> getReminders(@QueryParam("re") boolean reoccuring) {
+        return reminderService.getReminders().stream().filter(b -> b.getEveryyear() == reoccuring).collect(Collectors.toList());
     }
-
-
 }
