@@ -28,18 +28,4 @@ public class ImportRest implements ImportApi {
     public List<Reminder> importJson(List<Reminder> reminders) {
         return importService.importReminders(reminders);
     }
-
-    @Override
-    @Path("csv")
-    @POST
-    @Consumes("text/csv")
-    @Produces("text/csv")
-    public List<Reminder> importCsv(List<Reminder> reminders) {
-        return importService.importReminders(reminders);
-    }
-
-    @Override
-    public void test() {
-
-    }
 }

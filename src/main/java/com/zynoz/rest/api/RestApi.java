@@ -11,7 +11,6 @@ public interface RestApi {
     Response updateReminder(Reminder reminder);
     Reminder getReminder(Long id);
     List<Reminder> getRemindersJson();
-    List<Reminder> getRemindersCsv();
     List<Reminder> getReminders(boolean reoccuring);
     List<Reminder> deleteAll();
     Reminder deleteReminder(Long id);

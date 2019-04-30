@@ -58,15 +58,6 @@ public class ReminderRest implements RestApi {
     }
 
     @Override
-    @Path("listCsv")
-    @GET
-    @Consumes("text/csv")
-    @Produces("text/csv")
-    public List<Reminder> getRemindersCsv() {
-        return reminderService.getReminders();
-    }
-
-    @Override
     @Path("list")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)

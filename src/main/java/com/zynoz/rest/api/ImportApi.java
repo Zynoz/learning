@@ -6,6 +6,4 @@ import java.util.List;
 
 public interface ImportApi {
     List<Reminder> importJson(List<Reminder> reminders);
-    List<Reminder> importCsv(List<Reminder> reminders);
-    void test();
 }
